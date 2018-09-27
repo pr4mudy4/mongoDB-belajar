@@ -1,0 +1,27 @@
+# tar -zxvf mongoxxx.tgz
+
+# mv mongodb-linux-x86_64-enterprise-rhel62-4.0.2 mongodb (letakan di folder /opt/)
+
+untuk database bisa didalam folder mongodb
+
+# mkdir -p /opt/mongodb/data/
+
+kemudian export PATH
+
+# export PATH=/opt/mongodb/bin:$PATH
+
+jalankan server mongod di path data
+
+# /opt/mongodb/bin/mongod --dbpath=/opt/mongodb/data/  ( jika terjadi error mongod: error while loading shared libraries: libnetsnmpagent.so.20:)
+
+maka install lm_sensors-libs-3.1.1-17.el6.x86_64.rpm dan net-snmp-libs-5.5-60.el6.x86_64.rpm terlebih dahulu
+kemudian ulangi kembali 
+
+# /opt/mongodb/bin/mongod --dbpath=/opt/mongodb/data/
+
+jika ingin restart hidup bikin service seperti dibawah ini
+
+bash-4.1# cat /home/service_mongo.sh 
+/opt/mongodb/bin/mongod --auth --dbpath=/opt/mongodb/data/ --bind_ip_all --port 27616 &
+atau
+/opt/mongodb/bin/mongod --auth --dbpath=/opt/mongodb/data/ --bind_ip ::,0.0.0.0 --port 27616 &

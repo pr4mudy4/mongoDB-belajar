@@ -1,0 +1,23 @@
+# /opt/mongodb/bin/mongo (cara masuk lewat localhost) 
+jika tidak bisa pake cara berikut
+# /opt/mongodb/bin/mongo --host 10.14.153.41:27616   | C:\mongodb\bin\mongo.exe --host 127.0.0.1:27616 -u "music" -p "music666" -authenticationDatabase "musicstore"
+>show dbs
+> use amicon2
+>db
+>db.createUser({user:"amicon", pwd:"ami666con", roles: [ "readWrite", "dbAdmin" ]});
+>db.createCollection('customer');  //bikin table
+>db.customer.insert([{nama:"setha", panggilan:"yayuk"}, {nama:"agung", panggilan:"otong"}] ); //bikin field dan isi
+atau satuan
+>db.customer.insert({nama:"avi", pangilan:"instri"});
+>db.customer.update({nama:"avi"},{nama:"avi",panggilan:"istri"},{upsert: true});   //update table
+>db.customer.updateMany( {}, { $rename: { "pangilan": "panggilan"}}); //update nama field
+>db.customer.deleteOne( {_id : ObjectId("5b9627021de635c493fdbbec")}) //delete row
+
+
+===========================================================================================================
+
+# /opt/mongodb/bin/mongo --host 127.0.0.1:27616 -u "amicon" -p "ami666con" -authenticationDatabase "amicon2"
+jenis role 
+
+Database User Roles		: "readWrite", "read"
+Database Administration Roles	: "dbAdmin", "dbOwner", "userAdmin"
